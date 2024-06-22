@@ -1,0 +1,193 @@
+/*reset em todos os elementos*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #89CDCF;
+    overflow: hidden;
+  }
+
+  .titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.75rem;
+    color:#394647;
+    margin-top: 60px;
+    font-family: 'Archivo Black', sans-serif;
+
+  }
+
+  .linha-horizontal{
+    width: 430px;
+    height: 2px;
+    background-color: #394647;
+    margin-left: 34%;
+
+  }
+  .x-fundo{
+    position: fixed;
+    font-size: 40rem;
+    color:#DC1D25;
+    font-family: 'Archivo Black', sans-serif;
+    margin-left: 76%;
+    margin-bottom: -3000px;
+    z-index: 2;
+  }
+
+  .circulo-fundo{
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    z-index: 2;
+    border-radius: 50%;
+    margin-top: -500px;
+    margin-left: -380px;
+    background-color: #FFC516;
+ 
+  }
+
+  /*células do jogo da velha*/
+  .board {
+    display: grid;
+    width: 100%;
+    height: 70%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+  }
+  
+    /*hover de pre visualizaçao da jogada*/
+  .board.x .cell:not(.x):not(.circle):hover::after,
+  .board.x .cell:not(.x):not(.circle):hover::before,
+  .board.circle .cell:not(.x):not(.circle):hover::after,
+  .board.x .cell:not(.x):not(.circle):hover::before {
+    background: rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  /* Célula */
+  .cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  /*mostrar que o clique não é permitido*/
+  .cell.x,
+  .cell.circle {
+    cursor: not-allowed;
+  }
+  
+  /*tirar borda de cima*/
+  .cell:nth-child(1),
+  .cell:nth-child(2),
+  .cell:nth-child(3) {
+    border-top: none;
+  }
+  /*tirar borda da esquerda*/
+  .cell:nth-child(1),
+  .cell:nth-child(4),
+  .cell:nth-child(7) {
+    border-left: none;
+  }
+  /*tirar borda de baixo*/
+  .cell:nth-child(7),
+  .cell:nth-child(8),
+  .cell:nth-child(9) {
+    border-bottom: none;
+  }
+  /*tirar borda da direita*/
+  .cell:nth-child(3),
+  .cell:nth-child(6),
+  .cell:nth-child(9) {
+    border-right: none;
+  }
+  
+  /* X */
+  .cell.x::before,
+  .cell.x::after,
+  /*quando a board tiver a classe x colocar efeito de hover*/
+  .board.x .cell:not(.x):not(.circle):hover::after,
+  .board.x .cell:not(.x):not(.circle):hover::before {
+    content: "";
+    height: calc(100px * 0.14);
+    width: calc(100px * 0.8);
+    background: #DC1D25;
+    position: absolute;
+  }
+  /*perninhas do X*/
+  .cell.x::before,
+  .board.x .cell:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+  }
+  /*perninhas do X*/
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+  }
+  
+  /* Circulo */
+  .cell.circle::before,
+  .cell.circle::after,
+  /*quando a board tiver a classe circle colocar efeito de hover*/
+  .board.circle .cell:not(.x):not(.circle):hover::after,
+  .board.circle .cell:not(.x):not(.circle):hover::after {
+    content: "";
+    height: calc(100px * 0.8);
+    width: calc(100px * 0.8);
+    background: #FFC516;
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  /* Mensagem de Vitória */
+  .winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    flex-direction: column;
+    z-index: 3;
+  }
+  
+  /*botão de reiniciar*/
+  .winning-message-button {
+    font-size: 2.5rem;
+    background-color:#5ca4a7;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    margin-top: 16px;
+    color: white;
+  }
+  
+  .winning-message-button:hover {
+    color:#5ca4a7;
+    background-color: white;
+  }
+  
+  .winning-message-text {
+    color: white;
+    font-size: 5rem;
+  }
+  
+  .show-winning-message {
+    display: flex;
+  }

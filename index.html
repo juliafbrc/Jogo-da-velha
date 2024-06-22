@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--conexão com o css-->
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Jogo da Velha</title>
+
+    <!--conexao do google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <p class="titulo"> JOGO DA VELHA</p>
+    <div class="linha-horizontal"></div>
+    <div class="x-fundo">X</div>
+    <div class="circulo-fundo"></div>
+    <!--células do jogo da velha-->
+    <!--usar o atributo "data" para manipular dinamicamente com javascript -->
+    <div class="board" data-board>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+    </div>
+    <!--mensagem que aparece para o vencedor-->
+    <div class="winning-message" data-winning-message>
+      <p class="winning-message-text" data-winning-message-text>X Venceu!</p>
+      <!--botão de reiniciar-->
+      <button class="winning-message-button" data-restart-button>
+        Reiniciar!
+      </button>
+    </div>
+    <!--conexão com o javascript-->
+    <script src="./scripts.js"></script>
+  </body>
+</html>
